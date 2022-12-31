@@ -7,7 +7,7 @@ auth_client = AuthClient(**cfg.client_secrets)
 
 def getCustomerData(accessToken):
     #making Request
-    base_url = 'https://sandbox-quickbooks.api.intuit.com'
+    base_url = 'https://production-quickbooks.api.intuit.com'
     url = '{0}/v3/company/{1}/companyinfo/{1}'.format(base_url, cfg.qBData["realm_id"])
     auth_header = 'Bearer {0}'.format(accessToken)
     headers = {
@@ -27,7 +27,7 @@ def refresh_token():
 
 def getPaymentData(accessToken):
     #making Request
-    base_url = f'https://sandbox.api.intuit.com/quickbooks/v4/payments/charges/'
+    base_url = f'https://production.api.intuit.com/quickbooks/v4/payments/charges/'
     auth_header = 'Bearer {0}'.format(accessToken)
     data = {
         'Authorization': auth_header
