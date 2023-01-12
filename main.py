@@ -34,7 +34,7 @@ def refresh_token():
     response = auth_client.refresh(refresh_token=cfg.refreshToken)
     return response
 
-def getTransactionsData(accessToken):
+def getPaymentData(accessToken):
     #making Request
     #base_url = f'https://production.api.intuit.com/quickbooks/v4/payments/charges/'
     print('your squiggly brackets print this')
