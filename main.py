@@ -9,6 +9,7 @@ def getTransactionsData(accessToken):
     #making Request
     base_url = 'https://quickbooks.api.intuit.com'
     url = '{0}/v3/company/{1}/reports/TransactionList?date_macro=This Month-to-date&minorversion=65'.format(base_url, cfg.qBData["realm_id"])
+    #url = '{0}/v3/company/{1}/reports/TransactionList?start_date=2022-07-01&end_date=2023-01-11&minorversion=65'.format(base_url, cfg.qBData["realm_id"])
     auth_header = 'Bearer {0}'.format(accessToken)
     headers = {
         'Authorization': auth_header,
@@ -18,7 +19,12 @@ def getTransactionsData(accessToken):
 
     print("Response = ",response)
     #print("Response Data = ",response.text)
-    print(response.json())
+    #print(response.json())
+    
+    # ColData number is a range from 0-8 that holds data such as Transaction Description, Amount, etc.
+    print(response.json()['Rows']['Row'][8]['ColData'][8])
+    
+    
     #print("Success")
 
 def refresh_token():
