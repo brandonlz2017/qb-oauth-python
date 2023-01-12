@@ -1,6 +1,7 @@
 import pandas as pd
 from qbClient import AuthClient
 import constants as cfg
+import helper_functions as hf
 import requests
 from future.moves.urllib.parse import urlencode
 
@@ -23,8 +24,9 @@ def getTransactionsData(accessToken):
     #print(response.json())
     
     # ColData number is a range from 0-8 that holds data such as Transaction Description, Amount, etc.
-    print(response.json()['Rows']['Row'][8]['ColData'][8])
+    #print(response.json()['Rows']['Row'][8]['ColData'][8])
     
+    print(hf.tableBuilder(response.json()['Rows']['Row']))
     
     #print("Success")
 
