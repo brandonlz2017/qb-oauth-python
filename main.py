@@ -5,10 +5,10 @@ from future.moves.urllib.parse import urlencode
 
 auth_client = AuthClient(**cfg.client_secrets)
 
-def getCustomerData(accessToken):
+def getTransactionsData(accessToken):
     #making Request
-    base_url = 'https://production-quickbooks.api.intuit.com'
-    url = '{0}/v3/company/{1}/companyinfo/{1}'.format(base_url, cfg.qBData["realm_id"])
+    base_url = 'https://quickbooks.api.intuit.com'
+    url = '{0}/v3/company/{1}/reports/TransactionList?date_macro=This Month-to-date&minorversion=65'.format(base_url, cfg.qBData["realm_id"])
     auth_header = 'Bearer {0}'.format(accessToken)
     headers = {
         'Authorization': auth_header,
