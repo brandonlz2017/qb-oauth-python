@@ -25,10 +25,12 @@ def refresh_token():
     response = auth_client.refresh(refresh_token=cfg.refreshToken)
     return response
 
-def getPaymentData(accessToken):
+def getTransactionsData(accessToken):
     #making Request
     #base_url = f'https://production.api.intuit.com/quickbooks/v4/payments/charges/'
-    base_url = f'https://api.intuit.com/quickbooks/v4/payments/charges/'
+    print('your squiggly brackets print this')
+    print('{1}')
+    base_url = f'https://quickbooks.api.intuit.com/v3/company/{1}/reports/TransactionList?date_macro=This Month-to-date&minorversion=65'
     auth_header = 'Bearer {0}'.format(accessToken)
     data = {
         'Authorization': auth_header
@@ -54,9 +56,9 @@ if __name__ == "__main__":
     response2 = auth_client.get_user_info(access_token=response["access_token"])
     print(response2.text)
     print("\n\n\n")
-    getPaymentData(accessToken = response["access_token"])
+    getTransactionsData(accessToken = response["access_token"])
     
-    print(getPaymentData(accessToken = response["access_token"]))
+    print(getTransactionsData(accessToken = response["access_token"]))
     
     
     
