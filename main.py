@@ -17,9 +17,9 @@ def getTransactionsData(accessToken):
     response = requests.get(url, headers=headers)
 
     print("Response = ",response)
-    print("Response Data = ",response.text)
-
-    print("Success")
+    #print("Response Data = ",response.text)
+    print(response.json())
+    #print("Success")
 
 def refresh_token():
     response = auth_client.refresh(refresh_token=cfg.refreshToken)
