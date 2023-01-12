@@ -1,3 +1,4 @@
+import pandas as pd
 from qbClient import AuthClient
 import constants as cfg
 import requests
