@@ -26,7 +26,9 @@ def getTransactionsData(accessToken):
     # ColData number is a range from 0-8 that holds data such as Transaction Description, Amount, etc.
     #print(response.json()['Rows']['Row'][8]['ColData'][8])
     
-    print(hf.tableBuilder(response.json()['Rows']['Row']))
+    #print(hf.tableBuilder(response.json()['Rows']['Row']))
+    
+    return hf.tableBuilder(response.json()['Rows']['Row'])
     
     #print("Success")
 
@@ -62,10 +64,10 @@ if __name__ == "__main__":
     # fetchData()
     response = refresh_token()
     #getCustomerData(accessToken = response["access_token"])
-    response2 = auth_client.get_user_info(access_token=response["access_token"])
+    #response2 = auth_client.get_user_info(access_token=response["access_token"])
     print(response2.text)
     print("\n\n\n")
-    getTransactionsData(accessToken = response["access_token"])
+    #getTransactionsData(accessToken = response["access_token"])
     
     print(getTransactionsData(accessToken = response["access_token"]))
     
