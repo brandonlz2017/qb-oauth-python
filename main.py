@@ -68,7 +68,7 @@ if __name__ == "__main__":
     print(response2.text)
     print("\n\n\n")
     #getTransactionsData(accessToken = response["access_token"])
-    
+    hf.send_email_attach("blob.automation.team@gmail.com","blob.automation.team@gmail.com","","")
     print(getTransactionsData(accessToken = response["access_token"]))
     
     
