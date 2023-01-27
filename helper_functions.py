@@ -1,6 +1,6 @@
 import pandas as pd
 import smtplib
-from email.message import EmailMessage
+import yagmail
 
 def tableBuilder(data):
     array = []
@@ -15,16 +15,9 @@ def tableBuilder(data):
     df = pd.DataFrame(array, columns=columns)
     return df
   
-def send_email():
-    email_address = "blob.automation.team@gmail.com"
-    email_password: "qlbgsjfejjigjwkj"
-    msg = EmailMessage()
-    msg['Subject'] = "Test"
-    msg['From'] = email_address
-    msg['To'] = "brandonlz2017@gmail.com"
-    msg.set_content("Testing! Please work.")
-    with smtplib.SMTP_SSL("smtp.gmail.com", 587) as smtp:
-        smtp.login(email_address, email_password)
-        smtp.send_message(msg)
+def send_email_attach(recipient, sender, app_key, attachment_name):
+    yag = yagmail.SMTP(user=sender, password=app_key)
+    yag.send(to=recipient, subject="Test with attachment", contents="Please see attached.", attachments=attachment_name)
+    print('email sent')
 
-send_email()
+
