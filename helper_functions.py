@@ -1,4 +1,6 @@
 import pandas as pd
+import smtplib
+from email.message import EmailMessage
 
 def tableBuilder(data):
     array = []
@@ -13,3 +15,16 @@ def tableBuilder(data):
     df = pd.DataFrame(array, columns=columns)
     return df
   
+def send_email():
+    email_address = "blob.automation.team@gmail.com"
+    email_password: "qlbgsjfejjigjwkj"
+    msg = EmailMessage()
+    msg['Subject'] = "Test"
+    msg['From'] = email_address
+    msg['To'] = "brandonlz2017@gmail.com"
+    msg.set_content("Testing! Please work.")
+    with smtplib.SMTP_SSL("smtp.gmail.com", 587) as smtp:
+        smtp.login(email_address, email_password)
+        smtp.send_message(msg)
+
+send_email()
