@@ -27,10 +27,9 @@ def getTransactionsData(accessToken):
     #print(response.json()['Rows']['Row'][8]['ColData'][8])
     
     #print(hf.tableBuilder(response.json()['Rows']['Row']))
-    
-    return hf.tableBuilder(response.json()['Rows']['Row'])
-    
-    #print("Success")
+    df = hf.tableBuilder(response.json()['Rows']['Row'])
+    df.to_excel("transactions_export.xlsx")
+    return df
 
 def refresh_token():
     response = auth_client.refresh(refresh_token=cfg.refreshToken)
