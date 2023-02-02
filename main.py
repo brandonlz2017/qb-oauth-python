@@ -28,6 +28,9 @@ def getTransactionsData(accessToken):
     
     #print(hf.tableBuilder(response.json()['Rows']['Row']))
     df = hf.tableBuilder(response.json()['Rows']['Row'])
+    df['Tag'] = df['Transaction Name'].map(lambda x: hf.transCat(x))
+    df['Account Owner'] = df['Account'].map(lambda x: hf.account_map(x))
+    df['Amount'] = df['Amount'].astype(float).abs()
     df.to_excel("transactions_export.xlsx")
     return df
 
@@ -62,12 +65,9 @@ def getPaymentData(accessToken):
 if __name__ == "__main__":
     # fetchData()
     response = refresh_token()
-    #getCustomerData(accessToken = response["access_token"])
-    #response2 = auth_client.get_user_info(access_token=response["access_token"])
-    print(response2.text)
-    print("\n\n\n")
-    #getTransactionsData(accessToken = response["access_token"])
-    hf.send_email_attach("blob.automation.team@gmail.com","blob.automation.team@gmail.com","","")
+    print("\n\n")
+    getTransactionsData(accessToken = response["access_token"])
+    hf.send_email_attach("","blob.automation.team@gmail.com","","")
     print(getTransactionsData(accessToken = response["access_token"]))
     
     
