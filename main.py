@@ -10,8 +10,8 @@ auth_client = AuthClient(**cfg.client_secrets)
 def getTransactionsData(accessToken):
     #making Request
     base_url = 'https://quickbooks.api.intuit.com'
-    #url = '{0}/v3/company/{1}/reports/TransactionList?date_macro=This Fiscal Year-to-date&minorversion=65'.format(base_url, cfg.qBData["realm_id"])
-    url = '{0}/v3/company/{1}/reports/TransactionList?start_date=2023-04-01&end_date=2023-07-31&minorversion=65'.format(base_url, cfg.qBData["realm_id"])
+    url = '{0}/v3/company/{1}/reports/TransactionList?date_macro=This Fiscal Quarter-to-date&minorversion=65'.format(base_url, cfg.qBData["realm_id"])
+    #url = '{0}/v3/company/{1}/reports/TransactionList?start_date=2023-04-01&end_date=2023-07-31&minorversion=65'.format(base_url, cfg.qBData["realm_id"])
     auth_header = 'Bearer {0}'.format(accessToken)
     headers = {
         'Authorization': auth_header,
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     response = refresh_token()
     print("\n\n")
     getTransactionsData(accessToken = response["access_token"])
-    hf.send_email_attach("","blob.automation.team@gmail.com","","transactions_export.xlsx")
+    hf.send_email_attach("brandonlz2017@gmail.com","blob.automation.team@gmail.com","qlbgsjfejjigjwkj","transactions_export.xlsx")
     print(getTransactionsData(accessToken = response["access_token"]))
     
     

@@ -23,10 +23,14 @@ def transCat(value):
             return transDict[key]
 
 def account_map(value):
-    if ('(3042)' or '(8758)') in value:
+    if '(3042)' in value or '(8758)' in value or '3998' in value:
         return 'Brandon Account'
-    if '(3275)' in value:
+    elif '(3275)' in value:
         return 'Anissa Account'
+    elif '(1822)' in value:
+        return 'Joint Account'
+    else:
+        return 'ERROR'
 
 def send_email_attach(recipient, sender, app_key, attachment_name):
     yag = yagmail.SMTP(user=sender, password=app_key)
